@@ -26,41 +26,21 @@ int main(){
     cin >> outFileName;
     outFile.open(outFileName.c_str());
 
-    cout << "Enter name of test run; press return: ";
-    cin >> outputLabel;
-    outFile << outputLabel;
-
-    //getting the first command
-    inFile >> command;
+    //getting the first sentencd
+    string line;
 
     numCommands = 0;
     //input loop
-    while(command != "Quit"){
+    while(getline(inFile, line)){
         try{
-            if(command == "Push"){
-                inFile >> item;
-                stack.push(item);
-            } else if (command == "Pop"){
-                stack.pop();
-            } else if (command == "Top"){
-                item = stack.top();
-                outFile << "Top item is: " << item << endl;
-            } else if(command == "IsEmpty"){
-                if(stack.isEmpty()){
-                    outFile << "Stack is empty." << endl;
-                } else {
-                    outFile << "Stack is not empty." << endl;
-                }
-            } else if (command == "IsFull"){
-                if(stack.isFull()){
-                    cout << "Stack is full." << endl;
-                } else {
-                    cout << "Stack is not full" << endl;
-                }
-            } else {
-                cout << "Command not found." << endl;
+            for(char character : line){
+                stack.push(character);
             }
+            while(!stack.isEmpty()){
+                outFile << stack.pop();
 
+            }
+            outFile << "\n";
         }
         //handling errors
         catch(FullStack) {
@@ -70,14 +50,13 @@ int main(){
             outFile << "Emptystack exception thrown." << endl;
         }
         numCommands++;
-        cout << "Command number " << numCommands << " completed" << endl;
-        inFile >> command;
+        cout << "Line number " << numCommands << " completed" << endl;
     }
 
-    cout << "Testing complete." << endl;
+    cout << "File Output Complete." << endl;
     inFile.close();
     outFile.close();
     return 0;
 
-
 }
+

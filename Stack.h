@@ -1,5 +1,7 @@
 #include <iostream>
 #include <new>
+
+//node class
 template<typename T>
 struct Node{
     T value;
@@ -7,13 +9,14 @@ struct Node{
 };
 
 class FullStack{
-
+    //handles fullstack error
 };
 
 class EmptyStack{
-
+    //handles empty stack error
 };
 
+//stack class
 template<typename T>
 class Stack {
     private:
@@ -29,10 +32,14 @@ class Stack {
         ~Stack();
 
 };
+//constructor
 template<typename T>
 Stack<T>::Stack(){
     topNode = nullptr;
 }
+//function: push
+//precondition: stack exists
+//postcondition: new value added to stack
 template<typename T>
 void Stack<T>::push(T value){
     //check if full before pushing
@@ -45,6 +52,9 @@ void Stack<T>::push(T value){
         topNode = newNode;
     }
 }
+//function: pop
+//precondition: stack exists
+//postcondition: value removed from top of stack
 template<typename T>
 T Stack<T>::pop(){
     //check if empty before popping
@@ -58,6 +68,10 @@ T Stack<T>::pop(){
         return val; 
     }
 }
+
+//function: top
+//precondition: stack exists
+//postcondition: value of top returned
 template<typename T>
 T Stack<T>::top(){
     if(isEmpty()){
@@ -66,10 +80,16 @@ T Stack<T>::top(){
     return topNode->value;
 
 }
+//function: isempty
+//precondition: stack exists
+//postcondition: returns true if stack is empty
 template<typename T>
 bool Stack<T>::isEmpty(){
     return (topNode == nullptr);
 }
+//function: isFull
+//precondition: stack exists
+//postcondition: returns true if full
 template<typename T>
 bool Stack<T>::isFull(){
     try {
@@ -81,7 +101,9 @@ bool Stack<T>::isFull(){
         return true;
     }
 }
-
+//function: print
+//precondition: stack exists
+//postcondition: stack values printed to terminal
 template<typename T>
 void Stack<T>::print(){
     Node<T>* temp = topNode;
@@ -90,7 +112,9 @@ void Stack<T>::print(){
         temp = temp->next;
     }
 }
-
+//destructor
+//precondition: stack exists
+//postcondition: the contents of stack are destroyed - DESTROYED
 template<typename T>
 Stack<T>::~Stack(){
     Node<T>* temp = topNode;

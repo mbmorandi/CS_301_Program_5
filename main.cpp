@@ -13,9 +13,9 @@ int main(){
     string command;
     string outputLabel;
 
-    int item;
+    char item;
     int numCommands;
-    Stack<int> stack;
+    Stack<char> stack;
 
     //prompting user for file IO info
     cout << "Enter name of input file: ";

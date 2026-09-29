@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/mishabelle/Documents/University/Fall 2026/CS 301/Program Files/DynamicStack/main'
+relocations:     []
+...

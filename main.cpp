@@ -53,9 +53,9 @@ int main(){
                 }
             } else if (command == "IsFull"){
                 if(stack.isFull()){
-                    outFile << "Stack is full." << endl;
+                    cout << "Stack is full." << endl;
                 } else {
-                    outFile << "Stack is not full" << endl;
+                    cout << "Stack is not full" << endl;
                 }
             } else {
                 cout << "Command not found." << endl;

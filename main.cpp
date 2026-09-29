@@ -17,6 +17,7 @@ int main(){
     int numCommands;
     Stack<int> stack;
 
+    //prompting user for file IO info
     cout << "Enter name of input file: ";
     cin >> inFileName;
     inFile.open(inFileName.c_str());
@@ -29,9 +30,11 @@ int main(){
     cin >> outputLabel;
     outFile << outputLabel;
 
+    //getting the first command
     inFile >> command;
 
     numCommands = 0;
+    //input loop
     while(command != "Quit"){
         try{
             if(command == "Push"){
@@ -59,11 +62,12 @@ int main(){
             }
 
         }
+        //handling errors
         catch(FullStack) {
-            cout << "Fullstack excpetion thrown." << endl;
+            outFile << "Fullstack excpetion thrown." << endl;
         } 
         catch(EmptyStack) {
-            cout << "Emptystack exception thrown." << endl;
+            outFile << "Emptystack exception thrown." << endl;
         }
         numCommands++;
         cout << "Command number " << numCommands << " completed" << endl;
